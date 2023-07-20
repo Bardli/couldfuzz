@@ -1,0 +1,34 @@
+results = dict()
+import tensorflow as tf
+import time
+try:
+  try:
+    x_0 = 0.5
+    x_1 = 1.0
+    x_2 = 2.0
+    x_3 = 4.0
+    x = [x_0,x_1,x_2,x_3,]
+    name_tensor = tf.random.uniform([1, 1], dtype=tf.float16)
+    name = tf.identity(name_tensor)
+    results["res_low"] = tf.raw_ops.BesselI0(x=x,name=name,)
+    t_start = time.time()
+    results["res_low"] = tf.raw_ops.BesselI0(x=x,name=name,)
+    t_end = time.time()
+    results["time_low"] = t_end - t_start
+  except Exception as e:
+    results["err_low"] = "Error:"+str(e)
+  try:
+    x = [x_0,x_1,x_2,x_3,]
+    name = tf.identity(name_tensor)
+    name = tf.cast(name, tf.float32)
+    results["res_high"] = tf.raw_ops.BesselI0(x=x,name=name,)
+    t_start = time.time()
+    results["res_high"] = tf.raw_ops.BesselI0(x=x,name=name,)
+    t_end = time.time()
+    results["time_high"] = t_end - t_start
+  except Exception as e:
+    results["err_high"] = "Error:"+str(e)
+except Exception as e:
+  results["err"] = "Error:"+str(e)
+
+print(results)
