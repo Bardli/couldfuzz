@@ -112,7 +112,7 @@ if __name__ == "__main__":
     library = 'tf'
     release = 'v2.3.0'
     #to be changed
-    config_name = "expr.conf"
+    config_name = "demo_tf.conf"
     freefuzz_cfg = configparser.ConfigParser()
     freefuzz_cfg.read(join(__file__.replace(
         "FreeFuzz.py", "config"), config_name))
