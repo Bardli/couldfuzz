@@ -1,0 +1,6 @@
+torch
+tensorflow
+pymongo
+numpy
+configparser
+textdistance
