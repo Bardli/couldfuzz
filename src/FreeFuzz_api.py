@@ -113,7 +113,7 @@ if __name__ == "__main__":
         TFDatabase.database_config(host, port, mongo_cfg["tf_database"])
 
         #if cuda_oracle and not tf.test.is_gpu_available():
-        if cuda_oracle and not tf.config.list_physical_devices('GPU')==[]:
+        if cuda_oracle and tf.config.list_physical_devices('GPU')==[]:
             print("YOUR LOCAL DOES NOT SUPPORT CUDA")
             cuda_oracle = False
 
